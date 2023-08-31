@@ -133,6 +133,7 @@ You can add more codes to check the functionality and secrity of your banking sy
 
 # TypeScript Banking Application
 
+This is Typescript assignment for Typescript lecture. 
 Your task is to convert the existing project to TypeScript and add appropriate type annotations to enhance type safety and maintainability.
 
 ## Guidelines
