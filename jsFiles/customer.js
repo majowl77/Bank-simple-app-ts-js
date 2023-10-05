@@ -14,16 +14,23 @@ export class Customer {
     getTransactions(){
         return this.transactions;
     } 
-    getBalance(){
+    getBalance(){ 
+    const balance = this.transactions.reduce(
+            (total, transaction) => total + transaction.amount, 0 );
+        if (balance > -1){   
+            return balance;
+        }else {
+            return "Balance is under Zero"
+        }
 
     }
     addTransaction(amount){
-        const newAmount = amount * trn
-        if (!addAmount){
-            return false
-        }else{
-            this.transactions.push(amount);
-            return true;
-        }
+        // const newAmount = amount * this.transactions;
+        // if (!addAmount){
+        //     return false
+        // }else{
+        //     this.transactions.push(amount);
+        //     return true;
+        // }
     }
 }
