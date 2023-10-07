@@ -1,6 +1,10 @@
-import { Transactions } from "./transactions.js";
+import { Transactions } from "./transaction";
+
 export class Customer {
-    constructor(name, id){
+    name:string;
+    id : number;
+    transactions :Transactions[];
+    constructor(name:string, id:number){
         this.name = name;
         this.id = id ;
         this.transactions = [];
@@ -15,8 +19,8 @@ export class Customer {
     getTransactions(){
         return this.transactions;
     } 
-    getBalance(){ 
-    const balance = this.transactions.reduce(
+    getBalance(): number | boolean{ 
+    const balance: number = this.transactions.reduce(
             (total, transaction) => total + transaction.amount, 0 );
         if (balance > 0){   
             return balance;
@@ -25,10 +29,10 @@ export class Customer {
         }
 
     }
-    addTransactions(amount){
+    addTransactions(amount:number) : boolean{
         if (amount){
             const transaction = new Transactions(amount, Date())
-            this.transactions.push(transaction)
+            this.transactions.push(transaction);
             return true;
         }else return false;
     }

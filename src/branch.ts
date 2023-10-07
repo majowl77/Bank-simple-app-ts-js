@@ -1,6 +1,8 @@
 
 export class Branch {
-    constructor(name){
+    name :string;
+    customers: {};
+    constructor(name: string){
         this.name = name;
         this.customers = [];
     }
@@ -10,7 +12,7 @@ export class Branch {
     getCustomers(){
         return this.customers;
     } 
-    addCustomer(newcustomer){
+    addCustomer(newcustomer :{}) : boolean{
         const newCustomer = this.customers.find((customer) => customer.id === newcustomer.id);
         if (!newCustomer){
             this.customers.push(newcustomer);

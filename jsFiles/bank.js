@@ -1,6 +1,4 @@
-import { Branch } from "./branch.js";
-import { Customer } from "./customer.js";
-import { Transactions } from "./transaction.js";
+
 export class Bank {
     constructor(name){
         this.name =name;
@@ -49,8 +47,7 @@ export class Bank {
             console.log("Name Of Customer:",customer.name , ", Id Of Customer:", customer.id );
             if(includeTransactions){
                 const customerTransctions = customer.getTransactions();
-                    console.log("Transations amount:", customerTransctions);
-                    customerTransctions.forEach(element => {
+                customerTransctions.forEach(element => {
                         console.log("Transations amount:", element.amount ,"Transations date:" , element.date );
                     });               
             }
