@@ -17,14 +17,14 @@ export class Customer {
     getBalance(){ 
     const balance = this.transactions.reduce(
             (total, transaction) => total + transaction, 0 );
-        if (balance > -1){   
+        if (balance > 0){   
             return balance;
         }else {
             return false;
         }
 
     }
-    addTransaction(amount){
+    addTransactions(amount){
         if (amount){
             this.transactions.push(amount)
             return true;

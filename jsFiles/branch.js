@@ -1,3 +1,5 @@
+import { Customer } from "./customer.js";
+import { Transactions } from "./transaction.js";
 export class Branch {
     constructor(name){
         this.name = name;
@@ -21,10 +23,11 @@ export class Branch {
     addCustomerTransaction(customerId, amount){
         const customer = this.customers.find((customer) => customer.id === customerId);
         if(customer){
-            customer.transactions.push(amount);
+            customer.addTransactions(amount);
             return true;
         }else{
             return false;
         }  
     }
 }
+

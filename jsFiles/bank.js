@@ -1,4 +1,6 @@
-
+import { Branch } from "./branch.js";
+import { Customer } from "./customer.js";
+import { Transactions } from "./transaction.js";
 export class Bank {
     constructor(name){
         this.name =name;
@@ -29,8 +31,9 @@ export class Bank {
     }
     findBranchByName(branchName){
         const newBranch = this.branches.filter((oldBranch) => oldBranch.name === branchName);
-        if (newBranch){
-            return newBranch;
+        const anotherBranch = this.branches.filter((oldBranch) => oldBranch.name.includes(branchName));
+        if (newBranch && anotherBranch ){
+            return console.log(newBranch, anotherBranch) ;
         } else return null ;
     }
     checkBranch(branch){
@@ -43,14 +46,16 @@ export class Bank {
        if(this.checkBranch(branch)){ 
        const branchCustomer = branch.getCustomers();
        branchCustomer.forEach(customer => {
-            console.log("Name Of Customer",customer.name , "Id Of Customer", customer.id );
+            console.log("Name Of Customer:",customer.name , ", Id Of Customer:", customer.id );
             if(includeTransactions){
                 const customerTransctions = customer.getTransactions();
-                customerTransctions.forEach(element => {
-                    console.log("Transations amount:", element.amount ,"Transations date:" , element.date );
-                });
+                    console.log("Transations amount:", customerTransctions);
+                    customerTransctions.forEach(element => {
+                        console.log("Transations amount:", element.amount ,"Transations date:" , element.date );
+                    });               
             }
         
        });}else return false;
     }
 }
+
