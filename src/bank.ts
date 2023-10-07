@@ -1,10 +1,14 @@
+import { Branch } from "./branch";
+import { Customer } from "./customer";
 
 export class Bank {
-    constructor(name){
+    name:string;
+    branches:Branch[];
+    constructor(name:string){
         this.name =name;
         this.branches = []
     }
-    addBranch(branch){
+    addBranch(branch:Branch): boolean{
         const newBranch = this.branches.find((oldBranch) => oldBranch.name === branch.name);
         if (!newBranch){
             this.branches.push(branch);
@@ -13,7 +17,7 @@ export class Bank {
             return false;
         }
     }
-    addCustomer(branch, customer){ 
+    addCustomer(branch:Branch, customer:Customer): boolean{ 
         const newBranch = this.branches.find((oldBranch) => oldBranch.name === branch.name);
         if(newBranch){
             branch.addCustomer(customer);
@@ -21,26 +25,27 @@ export class Bank {
         }else return false;
       
     }
-    addCustomerTransaction(branch, customerId, amount){ 
-        const thisBranch = branch.addCustomerTransaction(customerId,amount);
+    addCustomerTransaction(branch:Branch, customerId:string, amount:number):boolean{ 
+        const thisBranch = this.addBranch(branch);
         if (thisBranch){
+            const Branch = branch.addCustomerTransaction(customerId,amount);
             return true;
-        }else false;
+        }else return false;
     }
-    findBranchByName(branchName){
+    findBranchByName(branchName:string): Branch[] | null{
         const newBranch = this.branches.filter((oldBranch) => oldBranch.name === branchName);
         const anotherBranch = this.branches.filter((oldBranch) => oldBranch.name.includes(branchName));
         if (newBranch && anotherBranch ){
-            return console.log(newBranch, anotherBranch) ;
+            return newBranch && anotherBranch ;
         } else return null ;
     }
-    checkBranch(branch){
+    checkBranch(branch :Branch) :boolean{
         const checkBranch = this.branches.find((oldBranch) => oldBranch.name === branch.name);
         if (checkBranch){
             return true;
         } else return false ;
     }
-    listCustomers(branch, includeTransactions){
+    listCustomers(branch:Branch, includeTransactions: boolean){
        if(this.checkBranch(branch)){ 
        const branchCustomer = branch.getCustomers();
        branchCustomer.forEach(customer => {

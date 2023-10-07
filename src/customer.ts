@@ -2,9 +2,9 @@ import { Transactions } from "./transaction";
 
 export class Customer {
     name:string;
-    id : number;
+    id : string;
     transactions :Transactions[];
-    constructor(name:string, id:number){
+    constructor(name:string, id:string){
         this.name = name;
         this.id = id ;
         this.transactions = [];
@@ -19,14 +19,12 @@ export class Customer {
     getTransactions(){
         return this.transactions;
     } 
-    getBalance(): number | boolean{ 
+    getBalance(): number { 
     const balance: number = this.transactions.reduce(
             (total, transaction) => total + transaction.amount, 0 );
         if (balance > 0){   
             return balance;
-        }else {
-            return false;
-        }
+        }else return 0;
 
     }
     addTransactions(amount:number) : boolean{

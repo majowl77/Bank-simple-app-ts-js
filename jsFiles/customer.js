@@ -20,9 +20,7 @@ export class Customer {
             (total, transaction) => total + transaction.amount, 0 );
         if (balance > 0){   
             return balance;
-        }else {
-            return false;
-        }
+        }else return false;
 
     }
     addTransactions(amount){

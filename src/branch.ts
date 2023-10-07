@@ -1,7 +1,8 @@
+import { Customer } from "./customer";
 
 export class Branch {
     name :string;
-    customers: {};
+    customers: Customer[];
     constructor(name: string){
         this.name = name;
         this.customers = [];
@@ -12,7 +13,7 @@ export class Branch {
     getCustomers(){
         return this.customers;
     } 
-    addCustomer(newcustomer :{}) : boolean{
+    addCustomer(newcustomer: Customer) : boolean{
         const newCustomer = this.customers.find((customer) => customer.id === newcustomer.id);
         if (!newCustomer){
             this.customers.push(newcustomer);
@@ -21,7 +22,7 @@ export class Branch {
             return false;
         }
     }
-    addCustomerTransaction(customerId, amount){
+    addCustomerTransaction(customerId:string, amount:number): boolean{
         const customer = this.customers.find((customer) => customer.id === customerId);
         if(customer){
             customer.addTransactions(amount);

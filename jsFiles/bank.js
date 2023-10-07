@@ -25,13 +25,13 @@ export class Bank {
         const thisBranch = branch.addCustomerTransaction(customerId,amount);
         if (thisBranch){
             return true;
-        }else false;
+        }else return false;
     }
     findBranchByName(branchName){
         const newBranch = this.branches.filter((oldBranch) => oldBranch.name === branchName);
         const anotherBranch = this.branches.filter((oldBranch) => oldBranch.name.includes(branchName));
         if (newBranch && anotherBranch ){
-            return console.log(newBranch, anotherBranch) ;
+            return newBranch && anotherBranch ;
         } else return null ;
     }
     checkBranch(branch){
@@ -55,4 +55,3 @@ export class Bank {
        });}else return false;
     }
 }
-
