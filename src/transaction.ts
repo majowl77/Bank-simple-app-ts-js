@@ -1,7 +1,7 @@
 export class Transactions {
     amount:number;
-    date:String;
-    constructor(amount:number,date :string){
+    date:Date;
+    constructor(amount:number,date :Date){
         this.amount = amount;
         this.date = date;
     }
