@@ -4,9 +4,19 @@
     "watch": "nodemon src/index.ts",
     "build": "tsc",
     "start": "node build/index.js"
+
+
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
     "typescript": "^5.0.3"
-  }
+  },
+  "name": "Majedah_SDA-onsite-javascript-typescript-banking-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/majowl77/Majedah_SDA-onsite-javascript-typescript-banking-app.git",
+  "author": "Majedah <122641068+majowl77@users.noreply.github.com>",
+  "license": "MIT",
+  "type": "module"
+
 }
